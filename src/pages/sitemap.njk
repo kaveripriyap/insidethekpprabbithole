@@ -4,7 +4,15 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for p in collections.all %}{% if p.url and p.url.endsWith("/") and not p.data.noindex %}
-  <url><loc>{{ p.url | absoluteUrl }}</loc>{% if p.data.shelf %}<lastmod>{{ p.date | isoDate }}</lastmod>{% endif %}</url>
-{%- endif %}{% endfor %}
+  <url><loc>{{ "/" | absoluteUrl }}</loc></url>
+  <url><loc>{{ "/brand/" | absoluteUrl }}</loc></url>
+{%- for s in shelves %}
+  <url><loc>{{ ("/" + s.url + "/") | absoluteUrl }}</loc></url>
+{%- endfor %}
+{%- for fp in familyPages %}
+  <url><loc>{{ fp.family.url | absoluteUrl }}</loc></url>
+{%- endfor %}
+{%- for p in collections.items %}
+  <url><loc>{{ p.url | absoluteUrl }}</loc><lastmod>{{ p.date | isoDate }}</lastmod></url>
+{%- endfor %}
 </urlset>
