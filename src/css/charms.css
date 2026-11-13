@@ -1,0 +1,82 @@
+/* ── CHARMS: nothing here should look like a website sitting in a museum. ───
+   Buttons are tickets, the search box is a brass speaking-slot, choices are
+   paper tags, switches are brass levers, links are inked. Everything keeps
+   its plain behaviour: a ticket is still a button, a tag is still a toggle. */
+
+/* tickets */
+.btn{--tk:var(--c-bone);position:relative;border:0;border-radius:0;box-shadow:none;padding:.85rem 1.5rem .75rem 2.1rem;
+  background:radial-gradient(circle at 0 50%,transparent .42rem,var(--tk) .46rem) left/50.5% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent .42rem,var(--tk) .46rem) right/50.5% 100% no-repeat;
+  filter:drop-shadow(0 .2rem 0 var(--btn-shadow)) drop-shadow(0 .5rem .5rem rgb(0 0 0/.3));transition:transform var(--m-base) var(--m-ease-land),filter var(--m-base)}
+.btn::before{content:"";position:absolute;left:1.25rem;top:.4rem;bottom:.4rem;border-left:1px dashed color-mix(in srgb,var(--c-ink) 40%,transparent)}
+.btn:hover{transform:translateY(-2px) rotate(-1.2deg);box-shadow:none;filter:drop-shadow(0 .3rem 0 var(--btn-shadow)) drop-shadow(0 .8rem .7rem rgb(0 0 0/.35))}
+.btn:active{transform:translateY(2px) rotate(0);box-shadow:none;filter:drop-shadow(0 0 0 var(--btn-shadow))}
+.btn--fall,.btn--buy{--tk:var(--c-gilt);box-shadow:none}
+.btn--fall:hover,.btn--buy:hover{box-shadow:none}
+.btn--onDeep{--tk:var(--c-bone);color:var(--c-ink);--btn-shadow:var(--c-brass)}
+.lean__close{border-radius:0;padding:.8rem 1.4rem .7rem;background:radial-gradient(circle at 0 50%,transparent .42rem,var(--c-bone) .46rem) left/50.5% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent .42rem,var(--c-bone) .46rem) right/50.5% 100% no-repeat}
+
+/* the search box: a slot in a brass plate */
+.top__find{border-radius:99px;border:2px solid var(--c-gilt);background:#040908;box-shadow:inset 0 .3rem .5rem rgb(0 0 0/.8),0 0 0 1px var(--c-brass);padding:0 .2rem 0 .4rem;transition:box-shadow var(--m-base)}
+.top__find:focus-within{border-color:var(--d-candle);box-shadow:inset 0 .3rem .5rem rgb(0 0 0/.8),0 0 1.4rem -.1rem var(--d-candle)}
+.top__find input{color:var(--c-page);min-height:2.35rem}
+.top__find input::placeholder{color:var(--c-fog)}
+.top__find button{color:var(--c-gilt);min-height:2.35rem}
+.top{border-bottom-color:color-mix(in srgb,var(--c-gilt) 35%,transparent)}
+.top__rooms a::after{background:var(--d-candle);box-shadow:0 0 .7rem .1rem var(--d-candle)}
+.top__surprise{border-bottom:0;text-decoration:underline wavy var(--c-gilt) 1px;text-underline-offset:.4em}
+
+/* small choices are paper tags, written by hand */
+.finder__sort{appearance:none;-webkit-appearance:none;border:0;border-radius:0 0 3px 3px;font-family:var(--f-hand);font-style:normal;font-size:1.45rem;line-height:1;padding:.55rem 2.2rem .35rem .9rem;min-height:2.75rem;transform:rotate(-1.5deg);
+  background:linear-gradient(45deg,transparent 50%,var(--c-ink) 50%) calc(100% - 1.15rem) 58%/.42rem .42rem no-repeat,linear-gradient(-45deg,transparent 50%,var(--c-ink) 50%) calc(100% - .75rem) 58%/.42rem .42rem no-repeat,var(--c-bone);filter:drop-shadow(0 .25rem .2rem rgb(0 0 0/.4))}
+.viewswitch{border:0;overflow:visible;gap:.45rem;border-radius:0}
+.viewswitch button{font-family:var(--f-hand);font-style:normal;font-size:1.45rem;line-height:1;padding:.55rem .9rem .35rem;border-radius:0 0 3px 3px;min-height:2.75rem;filter:drop-shadow(0 .25rem .2rem rgb(0 0 0/.4));transition:transform var(--m-base) var(--m-ease-land)}
+.viewswitch button:first-child{transform:rotate(1.6deg)}
+.viewswitch button:last-child{transform:rotate(-2deg)}
+.viewswitch button[aria-pressed="true"]{background:var(--d-candle);transform:translateY(.3rem)}
+.sizer{font-family:var(--f-hand);font-style:normal;border:0;border-radius:0 0 3px 3px;background:var(--c-bone);color:var(--c-ink);padding:.5rem .8rem .3rem;line-height:1;filter:drop-shadow(0 .25rem .2rem rgb(0 0 0/.5));transition:transform var(--m-base) var(--m-ease-land)}
+.sizer[data-size="-1"]{font-size:1.1rem;transform:rotate(-3deg)}
+.sizer[data-size="1"]{font-size:1.9rem;transform:rotate(2deg)}
+.sizer[data-size="-1"]:hover{transform:rotate(-3deg) scale(.86)}
+.sizer[data-size="1"]:hover{transform:rotate(2deg) scale(1.14)}
+.chip--small{border:0;border-radius:0 0 2px 2px;box-shadow:0 1px 0 var(--c-dust);background:#EDE4D0;transition:transform var(--m-quick)}
+.chip--small:nth-child(2n){transform:rotate(1.2deg)}
+.chip--small:nth-child(2n+1){transform:rotate(-1deg)}
+.chip--small:hover{transform:translateY(-2px)}
+.sibs__chips .chip{font-family:var(--f-hand);font-style:normal;font-size:1.45rem;border:0;border-radius:0 0 3px 3px;filter:drop-shadow(0 .25rem .2rem rgb(0 0 0/.4))}
+.sibs__chips .chip:nth-child(2n){transform:rotate(1.6deg)}
+.sibs__chips .chip:nth-child(3n){transform:rotate(-2.2deg)}
+
+/* a brass lever, not a toggle */
+.toggle{border:0;background:none;padding:.2rem 0;gap:.7rem;color:var(--fg);--fg:inherit}
+.toggle::before{content:"";order:-1;width:2.9rem;height:1.05rem;border-radius:1rem;background:#040908;border:2px solid var(--c-gilt);box-shadow:inset 0 .2rem .3rem rgb(0 0 0/.8)}
+.toggle__knob{position:absolute;width:1.45rem;height:1.45rem;margin-left:-.1rem;border:0;background:radial-gradient(circle at 35% 30%,#F6E3A8,var(--c-gilt) 55%,var(--c-brass));box-shadow:0 .2rem .3rem rgb(0 0 0/.5)}
+.toggle{position:relative;color:var(--c-page)}
+.toggle[aria-pressed="true"] .toggle__knob{transform:translateX(1.6rem);background:radial-gradient(circle at 35% 30%,#F6E3A8,var(--c-gilt) 55%,var(--c-brass))}
+.toggle__on,.toggle__off{font-family:var(--f-hand);font-size:1.5rem;letter-spacing:0;text-transform:none;font-weight:400}
+
+/* ways back are written by hand */
+.crumbs a{font-family:var(--f-hand);font-size:1.7rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--gold);transform:rotate(-2deg);transform-origin:left;transition:transform var(--m-base) var(--m-ease-land)}
+.crumbs a:hover{text-decoration:none;transform:rotate(-2deg) translateX(-.4rem)}
+
+/* links are inked, rules are stitched, bullets are knobs */
+.linkish,.prose a,.foot__notes a,.stratum__all,.roomhead .voice a,.placard dd>a:not(.chip){text-decoration:underline wavy var(--gold) 1px;text-underline-offset:.28em}
+.linkish:hover,.prose a:hover,.foot__notes a:hover{text-decoration-color:currentColor}
+.block__h::after,.brand__h::after{border-top:2px dotted color-mix(in srgb,var(--gold) 70%,transparent)}
+.foot__small{border-top:2px dotted var(--c-moss)}
+.foot__rooms a{display:flex;align-items:center;gap:.75rem}
+.foot__rooms a::before{content:"";width:.5rem;height:.5rem;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#F6E3A8,var(--c-gilt) 55%,var(--c-brass));transition:transform var(--m-base) var(--m-ease-land)}
+.foot__rooms a:hover{text-decoration:none}
+.foot__rooms a:hover::before{transform:scale(1.7)}
+.finder__key{border-radius:99px;padding:.1rem .6rem .15rem}
+
+/* the things nobody notices */
+html{scrollbar-color:var(--c-gilt) #060d0c;scrollbar-width:thin}
+::selection{background:var(--d-candle);color:var(--c-ink)}
+:focus-visible{outline:3px solid var(--d-candle);outline-offset:4px;border-radius:2px}
+.theme-page :focus-visible{outline-color:var(--c-ink)}
+.theme-page .foot :focus-visible,.theme-page .tabbar :focus-visible{outline-color:var(--d-candle)}
+.door,.drawer__link,.drop__link,.bottom__firstlink,.earkey__list a{cursor:url(/assets/key.svg) 4 4,pointer}
+.case__open,.plate__open{cursor:url(/assets/loupe.svg) 11 11,zoom-in}
+.drawer__ph,.drop__ph,.case__ph,.plate img{animation:develop .9s var(--m-ease-land) both}
+@keyframes develop{from{filter:sepia(.6) brightness(.7) blur(3px)}}
+@media (prefers-reduced-motion:reduce){.drawer__ph,.drop__ph,.case__ph,.plate img{animation:none}}

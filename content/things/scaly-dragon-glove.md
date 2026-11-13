@@ -1,15 +1,14 @@
 ---
 title: "Scaly Dragon Glove"
-description: "Wearable dragon scales."
+note: "Wearable dragon scales."
 maker: Kinnera
 year: 2023
 date: 2023-11-01
-family: demon-equipment
-habitat: "a hand"
-featured: true
-draft: false
-images:
-  - src: ScalyDragonGloveThing.jpg
+kind: [glove]
+made_with: [3d-printing, knitwear]
+tags: [wearable, demon-equipment, dragons, costume]
+photos:
+  - file: ScalyDragonGloveThing.jpg
     caption: "Scaly Dragon Glove Thing"
     alt: "A black knitted glove covered in overlapping orange 3D-printed dragon scales"
 ---

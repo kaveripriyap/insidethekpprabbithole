@@ -1,0 +1,66 @@
+/* ── CHROME: header, footer, the thumb bar, room headings ─────────────────── */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:var(--s-5);padding:.65rem clamp(1rem,3vw,2.5rem);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);color:var(--fg);transition:background var(--m-base),color var(--m-base),border-color var(--m-base)}
+.top__home{display:flex;align-items:center;gap:.6rem;text-decoration:none;margin-right:auto;min-height:2.75rem}
+.mark--top{height:2.3rem}
+.top__name{font-size:1.02rem;font-style:italic;font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1;white-space:nowrap}
+.top__name b{font-style:normal;font-weight:800;font-variation-settings:"SOFT" 0,"WONK" 1}
+.top__rooms{display:flex;gap:clamp(.8rem,2vw,1.8rem)}
+.top__rooms a,.top__surprise{font-family:var(--f-label);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:.7rem 0 .55rem;position:relative;white-space:nowrap}
+.top__rooms a::after{content:"";position:absolute;left:50%;bottom:.2rem;width:.42rem;height:.42rem;border-radius:50%;background:currentColor;transform:translateX(-50%) scale(0);transition:transform var(--m-base) var(--m-ease-land)}
+.top__rooms a:hover::after,.top__rooms a[aria-current]::after{transform:translateX(-50%) scale(1)}
+.top__find{display:flex;align-items:center;border:1px solid var(--line);border-radius:var(--corner);background:var(--card);transition:border-color var(--m-quick)}
+.top__find:focus-within{border-color:var(--fg)}
+.top__find input{width:10.5rem;border:0;background:none;padding:.5rem .2rem .5rem .8rem;font-family:var(--f-story);font-style:italic;font-size:1rem;outline:none;min-height:2.6rem}
+.top__find input::placeholder{color:var(--quiet);opacity:1}
+.top__find button{border:0;background:none;padding:0 .6rem;min-height:2.6rem;display:grid;place-items:center}
+.top__find svg,.tabbar svg{width:1.15rem;height:1.15rem;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.top__surprise{border-bottom:1px dashed currentColor;padding:.3rem 0 .1rem}
+/* the header mark is a live credit line */
+html[data-lit="kinnera"] .mark--top .mark__ear--r,html[data-lit="kaveri"] .mark--top .mark__ear--l{fill:var(--c-velvet);stroke:var(--door)}
+html[data-lit="kinnera"] .mark--top .mark__ear--l{transform:rotate(-6deg)}
+html[data-lit="kaveri"] .mark--top .mark__ear--r{transform:rotate(8deg)}
+html.is-perky .mark--top .mark__ear--l{transform:rotate(-9deg)}
+html.is-perky .mark--top .mark__ear--r{transform:rotate(11deg)}
+
+.roomhead{padding:clamp(2.2rem,6vw,5rem) clamp(1rem,3vw,2.5rem) clamp(1.2rem,3vw,2.2rem);max-width:74rem;margin:0 auto}
+.roomhead__title{font-size:clamp(3rem,2rem + 6.5vw,7.5rem);line-height:.92;font-weight:850;letter-spacing:-.035em;margin:.15em 0 .22em;text-wrap:balance;display:flex;align-items:baseline;gap:.25em;flex-wrap:wrap}
+.roomhead .voice{max-width:34rem;color:var(--fg)}
+.mark--head{height:.9em;align-self:center}
+.crumbs{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--f-label);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--quiet);margin-bottom:.4rem}
+.crumbs a{text-decoration:none;padding:.7rem 0;display:inline-block;color:var(--fg)}
+.crumbs a:hover{text-decoration:underline}
+
+.foot{margin-top:var(--s-9);background:#070F0E url(/assets/grain.png);--door:var(--c-gilt);color:var(--c-page);--fg:var(--c-page);--quiet:var(--c-fog);--line:var(--c-moss);--gold:var(--c-gilt)}
+.foot__in{max-width:74rem;margin:0 auto;padding:var(--s-8) clamp(1rem,3vw,2.5rem) calc(var(--s-7) + env(safe-area-inset-bottom));display:grid;gap:var(--s-6);grid-template-columns:1fr}
+.foot__mark{display:flex;align-items:flex-end;gap:1.2rem;align-self:start}
+.mark--foot{height:5.5rem}
+.foot__line{font-size:clamp(2.2rem,1.4rem + 3.5vw,4rem);font-style:italic;font-weight:300;line-height:.95;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--c-gilt)}
+.foot__rooms{display:flex;flex-wrap:wrap;gap:.2rem 1.6rem}
+.foot__rooms a{font-family:var(--f-label);font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:.6rem 0}
+.foot__rooms a:hover{text-decoration:underline}
+.foot__notes p{margin:.15rem 0;font-size:1rem}
+.foot__size{font-style:italic;font-size:1rem;color:var(--c-fog);margin-top:.8rem!important}
+.sizer{background:none;border:1px solid var(--c-moss);color:var(--c-page);font-family:var(--f-story);font-style:italic;font-size:.9rem;padding:.5rem .7rem .4rem;min-height:2.5rem;margin-left:.3rem;border-radius:var(--corner)}
+.sizer:hover{border-color:var(--c-page)}
+.sizer[data-size="-1"]{font-size:.72rem}
+.sizer[data-size="1"]{font-size:1.2rem}
+.foot__small{font-style:italic;font-size:.95rem;color:var(--c-fog);border-top:1px solid var(--c-moss);padding-top:1.2rem}
+@media (min-width:760px){.foot__in{grid-template-columns:1.4fr 1fr 1fr}.foot__small{grid-column:1/-1}.foot__rooms{flex-direction:column;gap:0}}
+
+.tabbar{display:none}
+@media (max-width:859px){
+  .top{padding:.45rem .9rem;gap:.6rem;position:static}
+  .top__rooms,.top__surprise{display:none}
+  .top__find input{width:8.2rem}
+  .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:grid;grid-template-columns:repeat(5,1fr);background:var(--c-burrow);color:var(--c-page);border-top:1px solid var(--c-moss);padding-bottom:env(safe-area-inset-bottom)}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;min-height:3.5rem;padding:.45rem .2rem .3rem;font-family:var(--f-label);font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--c-fog)}
+  .tabbar a[aria-current]{color:var(--c-page)}
+  .tabbar a[aria-current] svg:not(.mark){stroke:var(--c-gilt)}
+  .tabbar svg{width:1.3rem;height:1.3rem}
+  .mark--tab{height:1.45rem;width:auto}
+  .mark--tab .mark__ear{stroke-width:3.4}
+  .tabbar{--door:var(--c-gilt)}
+  .foot__in{padding-bottom:calc(5.5rem + env(safe-area-inset-bottom))}
+  html{scroll-padding-top:1rem}
+}
+@media (max-width:420px){.top__name{font-size:.92rem}.top__find input{width:6.4rem}}

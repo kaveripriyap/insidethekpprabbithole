@@ -1,14 +1,14 @@
 ---
 title: "Earrings Holder"
-description: "My sister calls this a basik earring holda."
+note: "My sister calls this a basik earring holda."
 maker: Kinnera
 year: 2023
 date: 2023-05-11
-family: holdas
-habitat: "the dresser"
-draft: false
-images:
-  - src: BasikEarringsHolda.jpg
+kind: [holder]
+made_with: [3d-printing]
+tags: [jewellery, holda]
+photos:
+  - file: BasikEarringsHolda.jpg
     caption: "Earrings"
-    alt: "A teal 3D-printed earring stand shaped like an abacus frame, hung with rows of earrings, on a dresser"
+    alt: "A teal 3D-printed earring stand with five rails hung with rows of earrings and a tray at its base, on a dresser below a mirror"
 ---

@@ -1,62 +1,73 @@
 # Inside the KPP Rabbit Hole
 
-Oddly useful things by Kinnera & Kaveri, mostly 3D printed, some sewn, all a little weird.
+The website of Kinnera and Kaveri, two sisters who build things.
+**Things we built, all the way down.**
 
-**Fall in. Come back holding something.** The site is a rabbit hole you actually fall into. On the surface there's a hole with two ears sticking out of it, one ear per sister. Scroll, and the hole swallows the screen. Inside is a burrow drawn in cross-section: tunnels lead to chambers, and each chamber holds one family of things (Holdas, Demon Equipment, Critters…). Every object is a *find* with a punched specimen tag. **Fall deeper** sends you to a random find you haven't seen yet, and the top bar counts how deep you've gone.
+- Live address: https://insidethekpprabbithole.xyz
+- Everything is made of plain files. There is no database and no server.
 
-- **Adding things:** see [HOW-TO-ADD-THINGS.md](HOW-TO-ADD-THINGS.md). No code needed.
-- **The brand:** `/brand` on the live site, built from `design/tokens.yaml`.
+## If you only want to add a thing
 
-## Where things live
+Read **[docs/HOW-TO-ADD-THINGS.md](docs/HOW-TO-ADD-THINGS.md)**. You can do it
+from github.com in a browser: upload photos, copy one file, fill it in, save.
+The site rebuilds itself and the new page designs itself.
+
+## What is where
+
+| Folder or file | What it holds |
+|---|---|
+| `content/things/` | One file per thing we made. This is the collection. |
+| `photos/` | The original photographs. **Never edited by anything.** |
+| `site.yaml` | Every word that appears across the site (intro, asides, cities, email). |
+| `design/tokens.yaml` | The one set of design values: colours, type, spacing, motion, the photo grade. |
+| `content/pages/` | Optional extra written pages (a file here becomes a page). |
+| `build/` | The machine that turns the above into the site. |
+| `src/` | The styles and scripts of the site. |
+| `docs/` | Plain-language guides. |
+| `dist/`, `generated/` | Made by the build. Never edit; not stored in the repository. |
+
+## The rooms
+
+| Address | Room |
+|---|---|
+| `/` | **The Fall.** The long way in: through a very small door, then down past everything, newest first. |
+| `/things/` | **The Cabinet.** Everything, with search and filters. Any view is a shareable link. |
+| `/project/<name>/` | An exhibit: one thing, in a room of its own. (Same addresses as the old site.) |
+| `/kind/…`, `/made-with/…`, `/tag/…`, `/by/…`, `/year/…` | Drawers: made automatically from the words in each thing's file. |
+| `/shop/` | **The Gift Shop.** Fills itself when a thing has a price. |
+| `/about/` | **The Curators.** |
+| `/brand/` | **The Mark.** The brand, with downloadable logo and Etsy files. |
+| `/surprise/` | Sends you to any one thing. |
+| `/system/` | Every page type, and what the designer's guarantee says right now. |
+
+## Commands (for whoever has a computer handy)
 
 ```
-content/things/        one .md file per thing (the file name is the address)
-content/things/_shelf.yaml   the chambers (families) and shelf settings
-content/_new-shelf-example/  copy this to add a new kind of content
-photos/                every photo, full size
-site.yaml              site words: title, tagline, email, cities, links
-design/tokens.yaml     colours, fonts, sizes: the whole look
-src/                   templates, CSS and JS (you shouldn't need these)
+npm ci            # install, once
+npm run build     # build the site into dist/
+npm run dev       # build, serve at http://localhost:8080, rebuild on every change
+npm run check     # only run the designer's guarantee
+npm run torture   # build with the deliberately awkward test content too
 ```
 
-## Run it
+Needs Node 20 or newer (Netlify uses 22).
 
-```sh
-npm ci
-npm start        # http://localhost:8080
-npm run build    # writes the site to _site/
-npm run check    # checks every content file for missing photos, alt text and typos
-```
+## Netlify
 
-Node 22 or newer. The first build resizes every photo (about 90 seconds). After that it's a few seconds.
-
-## Deploy (Netlify)
-
-Everything is set in `netlify.toml`, so the Netlify UI can be left on its defaults:
+Link the repository and deploy. `netlify.toml` already says everything:
 
 | Setting | Value |
 |---|---|
-| Base directory | *(empty)* |
 | Build command | `npm run build` |
-| Publish directory | `_site` |
-| Node version | 22 (set in `netlify.toml`) |
+| Publish directory | `dist` |
+| Node version | `22` |
+| Production branch | `main` |
 
-`netlify.toml` also sets a strict Content Security Policy (no inline scripts or styles anywhere), long caching for photos and fonts, a 301 redirect from the old `/assets/uploads/*` photo addresses to `/photos/*`, and a small local build plugin that keeps resized photos between deploys.
+The first build processes every photo (about a minute). After that, a small
+plugin in `netlify/plugins/photo-cache` remembers them, so builds take seconds.
 
-Old project addresses (`/project/<name>/`) are unchanged.
+## More
 
-## How it's built
-
-[Eleventy 3](https://www.11ty.dev/) with Nunjucks templates, plain CSS and one small JavaScript module. No framework and no client-side rendering: every page is static HTML that works without JavaScript. JS adds the ears that follow your cursor, the live clocks for the four cities, the depth counter and Fall Deeper.
-
-- Photos become responsive AVIF and JPEG (animated WebP for GIFs) with `@11ty/eleventy-img`. Originals stay linked from each find as "Full size".
-- `design/tokens.yaml` becomes CSS custom properties at build time (`src/lib/tokens.js`). The build fails if any promised colour pair drops below WCAG AA contrast.
-- The mark is drawn once, in `src/lib/mark.js`. The site, the `/brand` page, the downloadable SVGs, the favicons, the Etsy images and the social cards all use it.
-- A social card (Open Graph image) is generated for every page in `src/lib/after-build.js`, using the real photo rising out of the hole.
-- The fall is a CSS scroll-driven animation. Browsers that don't support it, and anyone with reduced motion turned on, get a still hero.
-
-## Fonts
-
-All open-source (SIL Open Font License), self-hosted and subset: **Gluten** (display), **Atkinson Hyperlegible Next** (body), **Martian Mono** (labels), **Baloo Tammudu 2** (Telugu, subset to the brand line only). Licences are in `src/assets/fonts/`.
-
-`design/fonts/` holds the desktop versions the build uses to outline text in logo files and social cards. `scripts/outline-telugu.py` regenerates the Telugu outline if that line ever changes.
+- [docs/HOW-TO-ADD-THINGS.md](docs/HOW-TO-ADD-THINGS.md): adding and changing things, selling things.
+- [docs/PHOTOS.md](docs/PHOTOS.md): what happens to photographs, and what never does.
+- [docs/SYSTEM.md](docs/SYSTEM.md): how the design system works and how to extend it without breaking the look.

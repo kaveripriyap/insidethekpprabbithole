@@ -1,26 +1,25 @@
 # ─────────────────────────────────────────────────────────────────────────────
-#  SITE COPY
-#  Words that appear across the whole site. Edit freely, keep the quotes.
+#  THE WORDS OF THE SITE
+#  Everything written here appears somewhere on the site. Edit freely.
+#  Keep the quote marks around each line.
 # ─────────────────────────────────────────────────────────────────────────────
 
 title: "Inside the KPP Rabbit Hole"
 shop_name: "the KPP rabbit hole"
 tagline: "Oddly useful."
-promise: "We fall down rabbit holes and come back holding something."
+line: "Things we built, all the way down."
+intro: "We are Kinnera and Kaveri, two sisters who make whatever we feel like. Some of it is useful. All of it is down here."
+description: "Kinnera and Kaveri are two sisters who build things: odd, delightful, oddly useful. Fall down the rabbit hole and wander the museum at the bottom."
 
-# The full web address, with no slash at the end. Used for canonical links,
-# the sitemap and social cards.
+# The full web address, with no slash at the end.
 url: "https://insidethekpprabbithole.xyz"
+email: "hello@kinnerapriyap.com"
 
-makers:
-  - name: Kinnera
-    ear: left
-    colour: bubblegum
-  - name: Kaveri
-    ear: right
-    colour: yolk
+# Leave blank to hide. Paste the full address to show a link.
+etsy: ""
+instagram: ""
 
-# "In two of these places at once"
+# Where we are.
 where: "In two of these places at once"
 cities:
   - { name: Berlin, tz: Europe/Berlin }
@@ -28,16 +27,34 @@ cities:
   - { name: Frankfurt, tz: Europe/Berlin }
   - { name: Hyderabad, tz: Asia/Kolkata }
 
-# Short bits used around the site
-intro: "We sometimes make things. Mostly 3D printed, some sewn, all of them a little odd and surprisingly useful."
-description: "Kinnera and Kaveri sometimes make things: oddly useful, mostly 3D printed, a little weird. Fall in."
-email: "hello@kinnerapriyap.com"
+# The photo of us on the Curators page and at the bottom of the hole.
+curators_photo: HooIzzUs.jpg
+curators_alt: "Kinnera and Kaveri smiling together in a selfie"
 
-# Leave blank to hide. Paste the full address to show a link.
-etsy: ""
-instagram: ""
-github: "https://github.com/kaveripriyap/insidethekpprabbithole"
+# The Curators page.
+about:
+  - "We are two sisters, usually found in two of four cities at once: Berlin, Singapore, Frankfurt and Hyderabad."
+  - "We make whatever we feel like making: things you wear, things that hold other things, things that light up, things that move, and a few things nobody asked for. If it needs a printer, a needle, a soldering iron or all three in one afternoon, so much the better."
+  - "This is where all of it lives. The newest things are near the surface. The oldest are at the very bottom."
 
-# The burrow's other name, in Telugu: kundelu (rabbit) + bokka (hole).
-telugu: "కుందేలు బొక్క"
-telugu_says: "kundelu bokka · rabbit hole"
+# Things said to you on the way down. One appears between each year.
+asides:
+  - "Mind the years. They are larger down here."
+  - "How deep does it go? About as far back as we've been making things."
+  - "You are now roughly the size of an earring. Carry on."
+  - "What holds everything and is made of nothing? (You're in it.)"
+  - "Nearly there. Or nearly somewhere."
+  - "If you see a dinosaur, it's a whale. Long story."
+
+# Notes inked on the labels. One is picked for each thing, always the same one.
+# Keep these general: they must be true of anything.
+margin_notes:
+  - "Please do touch."
+  - "Handle with curiosity."
+  - "This way up. Probably."
+  - "Do not feed."
+  - "A favourite. (They all are.)"
+  - "Dust lightly, admire heavily."
+  - "Closer than it appears."
+  - "Lean in."
+  - "Mind the ears."
