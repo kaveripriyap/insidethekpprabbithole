@@ -82,3 +82,43 @@ html{scrollbar-color:var(--c-gilt) #060d0c;scrollbar-width:thin}
 @media (prefers-reduced-motion:reduce){.drawer__ph,.drop__ph,.case__ph,.plate img{animation:none}}
 
 @media (max-width:700px){.crumbs{flex-wrap:wrap;gap:0 1rem}.crumbs a{font-size:1.45rem;white-space:nowrap;padding:.5rem 0}.crumbs__acc{font-size:.66rem}}
+
+/* on a phone the speaking-slot folds down to its brass button, which opens the Cabinet's finder */
+@media (max-width:599px){
+  .top__find{width:2.75rem;height:2.75rem;padding:0;justify-content:center;flex:none}
+  .top__find input{display:none}
+  .top__find button{width:100%;height:100%;padding:0;min-height:0}
+}
+@media (min-width:600px) and (max-width:859px){.top__find input{width:11.5rem}}
+
+/* ── the spacing pass: phone, tablet, laptop ─────────────────────────────── */
+.finder__q input{font-size:clamp(1.3rem,.9rem + 2.2vw,2.6rem)}
+@media (hover:none){.finder__q input{padding-right:0}}
+.foot__notes a{display:inline-block;padding:.55rem 0}
+.foot__notes p{margin:0}
+.morewrap{padding:2rem clamp(1rem,3vw,2.5rem) 0}
+.curators>*{min-width:0}
+@media (max-width:460px){.cities{grid-template-columns:1fr}}
+@media (pointer:coarse){
+  .gauge a{padding:.75rem .7rem .65rem .6rem}
+  .chip--small{min-height:2.6rem;padding:.45rem .8rem .5rem}
+  .placard dd>a:not(.chip){padding:.6rem 0}
+  .placard dl>div{align-items:center}
+}
+
+/* drawer labels: number and ears on one line, the title gets the full width under them */
+.drawer__plate{grid-template-columns:1fr auto;align-items:center;row-gap:.15rem}
+.drawer__acc{grid-column:1;grid-row:1}
+.drawer__plate>.credit{grid-column:2;grid-row:1}
+.drawer__title{grid-column:1/-1;overflow-wrap:break-word;hyphens:auto}
+.drawers.is-ledger .drawer__title{grid-column:2}
+.drop__title,.exhibit__title,.deeper__title,.door__name{overflow-wrap:break-word;hyphens:auto}
+/* rooms on a tablet: words line up under the picture */
+@media (max-width:999px){.exhibit--portrait .exhibit__words,.exhibit--square .exhibit__words{max-width:34rem;margin-inline:auto}.exhibit--portrait .crumbs,.exhibit--square .crumbs{max-width:34rem;margin-inline:auto}}
+@media (min-width:700px){.curators{grid-template-columns:minmax(0,.9fr) minmax(0,1fr)}}
+@media (max-width:1099px){.cities{grid-template-columns:1fr}}
+.earkey{margin-top:clamp(3.5rem,8vw,6rem)}
+.foot{margin-top:clamp(4rem,9vw,7rem)}
+.is-fall .foot,.is-room .foot{margin-top:0}
+.brand__rules{list-style:disc;padding-left:1.2em}
+.brand__rules li{margin:0 0 .5em}

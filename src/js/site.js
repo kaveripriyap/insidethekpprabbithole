@@ -66,6 +66,11 @@ document.addEventListener('click', e => {
   const a = e.target.closest('a[data-find]');
   if (a && document.getElementById('q')) { e.preventDefault(); document.getElementById('q').focus(); document.getElementById('find').scrollIntoView({ block: 'start' }); }
 });
+// an empty search (and the phone's brass button) simply opens the Cabinet's finder
+document.addEventListener('submit', e => {
+  const f = e.target.closest('.top__find'); if (!f) return;
+  if (!f.querySelector('input').value.trim()) { e.preventDefault(); location.href = '/things/#find'; }
+});
 // "← The Cabinet" returns to the Cabinet exactly as you left it
 document.addEventListener('click', e => {
   const a = e.target.closest('a[data-back]');

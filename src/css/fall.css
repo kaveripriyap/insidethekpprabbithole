@@ -4,20 +4,22 @@
 .is-fall .top{position:fixed;left:0;right:0;background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
 .is-fall .top{--card:rgb(12 26 24/.45)}
 .is-fall .foot{margin-top:0}
-.surface{min-height:100vh;min-height:100svh;display:grid;align-content:center;justify-items:center;text-align:center;gap:1.2rem;padding:6.5rem clamp(1rem,4vw,3rem) 17rem;position:relative;overflow:hidden;color:var(--c-page);
+/* The first screen is sized from the height of the window as well as its width, so the words never run into the door.
+   --rim is the height of the door-and-ears, --zone the space kept clear for it. The script uses the same numbers. */
+.surface{--rim:clamp(7.5rem,25svh,14.375rem);--zone:calc(7svh + .883 * var(--rim) + 1.4rem);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem clamp(1rem,4vw,3rem) var(--zone);position:relative;overflow:hidden;color:var(--c-page);
   background:radial-gradient(34rem 20rem at 50% 100%,color-mix(in srgb,var(--d-candle) 46%,transparent),transparent 72%),radial-gradient(70rem 46rem at 6% -6%,color-mix(in srgb,var(--d-plum) 78%,transparent),transparent 66%),radial-gradient(58rem 42rem at 100% 12%,color-mix(in srgb,var(--d-sea) 62%,transparent),transparent 62%),url(/assets/grain.png),#080D12}
 .surface>*{position:relative}
-.surface__kicker{color:var(--c-gilt)}
+.surface__kicker{color:var(--c-gilt);margin:0 0 clamp(.7rem,2svh,1.5rem)}
 .surface__title{text-shadow:0 0 5rem color-mix(in srgb,var(--d-candle) 30%,transparent)}
 .motes{position:absolute!important;inset:0;pointer-events:none}
 .motes i{position:absolute;left:calc(var(--x)*1%);bottom:-2%;width:.22rem;height:.22rem;border-radius:50%;background:var(--d-candle);box-shadow:0 0 .7rem .12rem color-mix(in srgb,var(--d-candle) 70%,transparent);opacity:0;animation:mote calc(var(--d)*1s) linear calc(var(--w)*-1s) infinite}
 .motes i:nth-child(1){--x:8;--d:19;--w:3}.motes i:nth-child(2){--x:17;--d:26;--w:11}.motes i:nth-child(3){--x:26;--d:21;--w:17}.motes i:nth-child(4){--x:33;--d:30;--w:5}.motes i:nth-child(5){--x:41;--d:17;--w:9}.motes i:nth-child(6){--x:47;--d:24;--w:20}.motes i:nth-child(7){--x:53;--d:20;--w:1}.motes i:nth-child(8){--x:58;--d:28;--w:14}.motes i:nth-child(9){--x:64;--d:18;--w:7}.motes i:nth-child(10){--x:71;--d:25;--w:22}.motes i:nth-child(11){--x:78;--d:22;--w:12}.motes i:nth-child(12){--x:85;--d:29;--w:4}.motes i:nth-child(13){--x:92;--d:19;--w:16}.motes i:nth-child(14){--x:45;--d:33;--w:25}.motes i:nth-child(15){--x:56;--d:31;--w:8}.motes i:nth-child(16){--x:22;--d:34;--w:28}
 @keyframes mote{0%{transform:translate(0,0);opacity:0}8%{opacity:.9}50%{transform:translate(1.6rem,-52vh);opacity:.55}100%{transform:translate(-1rem,-104vh);opacity:0}}
-.surface__title{font-size:clamp(3.1rem,1.4rem + 7.6vw,8.2rem);line-height:.9;font-weight:850;letter-spacing:-.04em;max-width:11ch;text-wrap:balance}
-.surface__intro{max-width:31rem;font-size:clamp(1.1rem,1rem + .4vw,1.3rem);color:color-mix(in srgb,var(--c-page) 82%,transparent)}
-.doors{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem;margin-top:.6rem}
+.surface__title{font-size:clamp(2.6rem,min(1rem + 8.6vw,14.5svh),10rem);line-height:.9;font-weight:850;letter-spacing:-.04em;max-width:11ch;text-wrap:balance;margin:0 0 .3em}
+.surface__intro{max-width:34rem;font-size:clamp(1rem,min(1rem + .4vw,2.6svh),1.3rem);line-height:1.5;text-wrap:balance;margin:0 0 clamp(1rem,3.4svh,2.4rem);color:color-mix(in srgb,var(--c-page) 82%,transparent)}
+.doors{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.8rem}
 .rim{position:relative;height:0;z-index:3;display:grid;justify-items:center}
-.mark--rim{position:absolute;bottom:0;height:clamp(8rem,22vh,13rem)}
+.mark--rim{position:absolute;bottom:calc(7svh - 1rem);height:clamp(7.5rem,22svh,13rem)}
 .rim__hand{position:absolute;bottom:3rem;left:calc(50% + 5.5rem);white-space:nowrap;color:var(--c-gilt)}
 .mark--rim .mark__ear--l{animation:twitch-l 7s 1.2s infinite}
 .mark--rim .mark__ear--r{animation:twitch-r 9s 3s infinite}
@@ -82,12 +84,13 @@ html.past-surface .gauge{opacity:1;pointer-events:auto}
 
 /* ── the falling version ─────────────────────────────────────────────────── */
 html.fall-live .fall__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#080D12;contain:layout paint}
-html.fall-live .surface{position:absolute;inset:0;min-height:0;padding-bottom:36vh;padding-top:5rem;gap:.9rem;z-index:2}
+html.fall-live .surface{position:absolute;inset:0;min-height:0;z-index:2}
 html.fall-live .surface>:not(.motes){will-change:transform,opacity}
 html.fall-live .rim{position:absolute;left:0;top:0;height:auto;z-index:4;display:block;will-change:transform,opacity}
 html.fall-live .mark--rim{position:static;display:block}
 html.fall-live .rim__hand{bottom:auto;top:52%;left:108%}
 html.fall-live .mark--rim{overflow:hidden}
+html.fall-live .mark--rim .mark__light{display:none}
 html.fall-live .mark--rim .mark__ear{translate:0 var(--duck,0)}
 html.fall-live .well{position:absolute;inset:0;border:0;padding:0;z-index:3;clip-path:inset(var(--dt,88%) var(--dr,48%) var(--db,4%) var(--dl,48%) round var(--dq,20px) var(--dq,20px) 0 0)}
 html.fall-live .well::after{content:"";position:absolute;inset:0;z-index:20000;pointer-events:none;background:radial-gradient(circle at 50% 88%,#FFE2A6,var(--d-candle) 30%,#C87A2C 75%);opacity:var(--glow,1)}
@@ -118,14 +121,25 @@ html.fall-live .critter svg{width:100%;height:100%;fill:none;stroke:currentColor
   html.fall-live .drop--giant{width:88vw}
   html.fall-live .drop--tiny{width:30vw}
   html.fall-live .drop__ph{max-height:50vh}
-  html.fall-live .surface{padding-bottom:37vh;padding-top:4.5rem}
-  .surface__title{max-width:9ch}
-  html.fall-live .rim__hand{display:none}
+  .surface{--rim:clamp(7.5rem,22svh,14.375rem);--zone:calc(5.4rem + .883 * var(--rim) + 1.2rem);padding-top:4.2rem}
+  html.fall-live .rim__hand{top:46%}
+  @media (max-width:599px){html.fall-live .rim__hand,.rim__hand{display:none}}
 }
-@media (max-height:640px){html.fall-live .surface__intro{display:none}}
+@media (max-width:599px){.surface{--rim:clamp(5.75rem,17svh,9.375rem)}.surface__title{max-width:9ch;font-size:clamp(2.4rem,min(1.4rem + 7.6vw,7.4svh),10rem)}}
+@media (max-height:520px){.surface__intro{display:none}}
+/* on a phone the two quieter ways in are written by hand under the ticket */
+@media (max-width:520px){
+  .doors{gap:.5rem 1.4rem}
+  .doors .btn--fall{flex-basis:100%;justify-content:center;max-width:14rem}
+  .doors .btn--quiet{background:none;filter:none;padding:.5rem .1rem;min-height:2.75rem;font-family:var(--f-hand);font-size:1.65rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--c-page);text-decoration:underline wavy var(--c-gilt) 1px;text-underline-offset:.3em}
+  .doors .btn--quiet::before,.doors .btn--quiet small{display:none}
+  .doors .btn--quiet:hover{filter:none;transform:none}
+}
 
 /* before the script wakes, the first screen already sits exactly where the falling version puts it */
-@media (prefers-reduced-motion:no-preference){
-  .surface{padding-top:5rem;padding-bottom:36vh;gap:.9rem;height:100vh;height:100svh;min-height:0}
-  @media (max-width:859px){.surface{padding-top:4.5rem;padding-bottom:37vh}}
-}
+@media (prefers-reduced-motion:no-preference){.surface{height:100vh;height:100svh;min-height:0}}
+
+/* at the very bottom the depth gauge steps aside for the doors */
+html.at-bottom .gauge{opacity:0;pointer-events:none}
+@media (max-width:859px){.mark--rim{bottom:4.4rem}}
+.bottom__firstlink{width:min(64vw,18rem)}

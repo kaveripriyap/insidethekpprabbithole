@@ -45,12 +45,16 @@ The site rebuilds itself and the new page designs itself.
 ```
 npm ci            # install, once
 npm run build     # build the site into dist/
-npm run dev       # build, serve at http://localhost:8080, rebuild on every change
+npm run dev       # build, serve at http://localhost:8080 (compressed, with the live security headers), rebuild on every change
 npm run check     # only run the designer's guarantee
 npm run torture   # build with the deliberately awkward test content too
 ```
 
 Needs Node 20 or newer (Netlify uses 22).
+
+For a speed test that behaves like the live site, serve the built folder with a
+little network delay: `node build/dev.mjs --serve-only --latency=40`, then run
+Lighthouse against `http://localhost:8080`.
 
 ## Netlify
 

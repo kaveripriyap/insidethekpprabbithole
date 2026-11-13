@@ -15,7 +15,7 @@ still.addEventListener?.('change', () => location.reload());
 // in the still version the gauge simply appears once you leave the surface
 if (root && still.matches) {
   const well = root.querySelector('.well');
-  const on = () => { const top = well.getBoundingClientRect().top; html.classList.toggle('past-surface', top < innerHeight * 0.5); html.classList.toggle('in-deep', top < 30); };
+  const on = () => { const top = well.getBoundingClientRect().top; html.classList.toggle('past-surface', top < innerHeight * 0.5); html.classList.toggle('in-deep', top < 30); html.classList.toggle('at-bottom', root.querySelector('.bottom').getBoundingClientRect().top < innerHeight * 0.7); };
   addEventListener('scroll', on, { passive: true }); on();
 }
 
@@ -24,6 +24,7 @@ function live() {
   const shaft = root.querySelector('.fall__shaft'), stage = root.querySelector('.fall__stage');
   const surface = root.querySelector('.surface'), rim = root.querySelector('.rim'), rimMark = rim.querySelector('.mark');
   const well = root.querySelector('.well'), things = root.querySelector('.well__things');
+  const bottomEl = root.querySelector('.bottom');
   const gauge = root.querySelector('.gauge'), gaugeLinks = [...gauge.querySelectorAll('a[data-year]')];
   const els = [...things.children];
   const P = 1000;                    // perspective, in px (matches the CSS)
@@ -67,9 +68,9 @@ function live() {
     });
     shaft.style.height = `${Math.round(intro + depth * K + vh * 0.2)}px`;
     // the way in is a very small door at the foot of the first screen
-    rimH = Math.max(120, Math.min(vh * 0.25, 230));
+    rimH = vw < 600 ? Math.max(92, Math.min(vh * 0.17, 150)) : small ? Math.max(120, Math.min(vh * 0.22, 230)) : Math.max(120, Math.min(vh * 0.25, 230));   // the same numbers as --rim in fall.css
     rimMark.style.height = `${rimH}px`;
-    const unit = rimH / 120, ground = vh * (small ? 0.86 : 0.93);
+    const unit = rimH / 120, ground = small ? vh - 86 : vh * 0.93;      // on small screens the door stands just above the thumb bar
     const left = vw / 2 - 50 * unit, top = ground - 106 * unit;
     rim.style.left = `${left}px`; rim.style.top = `${top}px`;
     door = { t: top + 42 * unit, l: left + 24 * unit, r: vw - (left + 76 * unit), b: vh - ground, q: 26 * unit };
@@ -80,8 +81,12 @@ function live() {
   function wake(n) { const i = n.img; if (!i || !i.dataset.parked) return; i.setAttribute('srcset', i.dataset.ss); i.setAttribute('src', i.dataset.s); i.loading = 'eager'; delete i.dataset.parked; }
 
   let tunnel = null;
-  const boot = () => { tunnel = startTunnel(root.querySelector('.well__gl')); request(); };
-  'requestIdleCallback' in window ? requestIdleCallback(boot, { timeout: 1500 }) : setTimeout(boot, 400);
+  // The walls are only seen once you are through the door, so they are not drawn until you first move
+  // (or the page has sat idle for a while). The first screen stays light to load.
+  let booted = false;
+  const boot = () => { if (booted) return; booted = true; tunnel = startTunnel(root.querySelector('.well__gl')); request(); };
+  for (const ev of ['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown']) addEventListener(ev, boot, { once: true, passive: true });
+  setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(boot, { timeout: 2000 }) : boot()), 6000);
   let target = 0, cur = 0, vel = 0, px = 0, py = 0, tpx = 0, tpy = 0, last = performance.now(), front = null, raf = 0, hereYear = null;
   const shaftTop = () => shaft.getBoundingClientRect().top + scrollY;
   const camAt = y => Math.max(0, (y - shaftTop() - intro) / K);
@@ -111,6 +116,7 @@ function live() {
     rim.style.setProperty('--duck', `${(Math.min(1, t * 9) * rimH * 0.62).toFixed(1)}px`);
     html.classList.toggle('in-deep', e > 0.9);
     html.classList.toggle('past-surface', t > 0.75);
+    html.classList.toggle('at-bottom', bottomEl.getBoundingClientRect().top < vh * 0.7);
 
     things.style.perspectiveOrigin = `${(50 + px * 5).toFixed(2)}% ${(50 + py * 5).toFixed(2)}%`;
     let best = null, bestD = 1e9;

@@ -39,6 +39,7 @@
 .case__open,.plate__open{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;position:relative}
 .case__ph{width:100%;height:auto;max-height:82vh;object-fit:contain;background-color:transparent!important}
 .exhibit--portrait .case__ph{max-height:none}
+@media (max-width:999px){.exhibit--portrait .case,.exhibit--square .case{max-width:34rem;margin-inline:auto}}
 .exhibit--landscape .case,.exhibit--square .case{width:fit-content;max-width:100%;margin-inline:auto}
 .exhibit--landscape .case__ph{width:auto;max-width:100%;max-height:74vh}
 @media (min-width:1000px){.exhibit--square .case{margin-inline:0}}

@@ -56,7 +56,7 @@ ${critterSprite()}
 <a class="btn btn--quiet" href="/surprise/" data-surprise>Surprise me<small>any one thing</small></a>
 </div>
 </section>
-<div class="rim" aria-hidden="true">${markSvg({ lit: 'both', cls: 'mark mark--rim', hole: false })}<span class="rim__hand hand">it's bigger inside</span></div>
+<div class="rim" aria-hidden="true">${markSvg({ lit: 'both', cls: 'mark mark--rim' })}<span class="rim__hand hand">it's bigger inside</span></div>
 <div class="well">
 <canvas class="well__gl" aria-hidden="true"></canvas>
 <ol class="well__things">
@@ -109,7 +109,7 @@ export function cabinetPage({ site, tokens, things, facets }) {
 <form class="finder" id="find" action="/things/" method="get" role="search" data-finder>
 <div class="finder__q">
 <label for="q" class="label">Find a thing</label>
-<input id="q" name="q" type="search" placeholder="earrings, a table, something with tentacles&hellip;" autocomplete="off" enterkeyhint="search">
+<input id="q" name="q" type="search" placeholder="earrings, a table, tentacles&hellip;" autocomplete="off" enterkeyhint="search">
 <span class="finder__key" aria-hidden="true">press /</span>
 </div>
 <div class="finder__facets">

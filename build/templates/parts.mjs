@@ -109,7 +109,7 @@ ${rooms.map(rm => `<a href="${rm.href}"${rm.key === room || (rm.key === 'cabinet
 <form class="top__find" action="/things/" method="get" role="search">
 <label class="sr" for="top-q">Find a thing</label>
 <input id="top-q" name="q" type="search" placeholder="Ask for a thing&hellip;" autocomplete="off" enterkeyhint="search">
-<button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg></button>
+<button type="submit" aria-label="Find a thing in the Cabinet"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg></button>
 </form>
 <a class="top__surprise" href="/surprise/" data-surprise>Surprise me</a>
 </header>
