@@ -63,7 +63,7 @@ shape:
 # (See docs/PHOTOS.md. Originals in photos/ are never touched.)
 grade:
   paper_white: "#EFE7D8"   # white walls are balanced toward this, so photos melt into the page
-  balance: 0.6             # 0 = leave white balance alone, 1 = fully neutralise then tint to paper
+  balance: 0.35            # 0 = leave white balance alone, 1 = fully neutralise then tint to paper (kept gentle: a thing's colour must stay its colour)
   exposure: 0.8            # 0 = leave brightness alone, 1 = fully even out
   contrast: 0.16           # strength of the gentle S-curve
   saturation: 1.0          # 1 = as shot (plus a whisper); raise or lower to taste

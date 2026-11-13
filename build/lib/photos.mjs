@@ -200,11 +200,11 @@ function makeRecipe(s, grade) {
   const pm = Math.max(...paper);
   const tint = paper.map(c => c / pm);
   let gains = [1, 1, 1], exposure = 1;
-  const bal = grade.balance ?? 0.65, exp = grade.exposure ?? 0.8;
+  const bal = grade.balance ?? 0.35, exp = grade.exposure ?? 0.8;
   const night = s.p50 < 0.16;
   if (s.wall && !night) {
     const wm = Math.max(...s.wall);
-    gains = s.wall.map((c, i) => Math.min(1.12, Math.max(0.89, (tint[i] / (c / wm)) ** bal)));
+    gains = s.wall.map((c, i) => Math.min(1.06, Math.max(0.94, (tint[i] / (c / wm)) ** bal)));
     const g1 = gains[1]; gains = gains.map(g => g / g1);
     const wl = 0.2126 * s.wall[0] + 0.7152 * s.wall[1] + 0.0722 * s.wall[2];
     exposure = Math.min(1.2, Math.max(0.92, (0.9 / wl) ** exp));

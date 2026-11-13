@@ -26,7 +26,7 @@ cache that can be deleted at any time and is rebuilt from the originals).
 4. **Makes a graded copy**, the house look, applied to the whole frame at once:
    - *White balance.* It finds the white wall in the photo and nudges it
      toward the paper colour of the site, so photos taken under yellow or
-     blue light sit together. Limited to a few percent per colour.
+     blue light sit together. Deliberately gentle and limited to 6% per colour, so a thing's own colour stays its colour.
    - *Exposure.* Dim photos are lifted, bright ones eased, so walls land at
      a similar brightness. Limited to about a fifth. Night shots are left dark.
    - *Contrast.* One soft curve, with highlights protected from blowing out.

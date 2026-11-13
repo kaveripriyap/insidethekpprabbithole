@@ -80,3 +80,5 @@ html{scrollbar-color:var(--c-gilt) #060d0c;scrollbar-width:thin}
 .drawer__ph,.drop__ph,.case__ph,.plate img{animation:develop .9s var(--m-ease-land) both}
 @keyframes develop{from{filter:sepia(.6) brightness(.7) blur(3px)}}
 @media (prefers-reduced-motion:reduce){.drawer__ph,.drop__ph,.case__ph,.plate img{animation:none}}
+
+@media (max-width:700px){.crumbs{flex-wrap:wrap;gap:0 1rem}.crumbs a{font-size:1.45rem;white-space:nowrap;padding:.5rem 0}.crumbs__acc{font-size:.66rem}}
