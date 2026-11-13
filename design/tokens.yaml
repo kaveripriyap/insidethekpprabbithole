@@ -1,0 +1,128 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  KPP DESIGN TOKENS
+#  The one place the look of the site lives. Change a value here and the whole
+#  site, the /brand page, the logo files and the social cards all follow.
+#  Colours are hex codes. Names are what we call them out loud.
+# ─────────────────────────────────────────────────────────────────────────────
+
+colours:
+  # The two ears. One per sister.
+  bubblegum: { hex: "#FF7AB8", name: Bubblegum, role: "Kinnera's ear. Critters, highlights, things that should feel cute." }
+  yolk:      { hex: "#FFC629", name: Yolk,      role: "Kaveri's ear. Holdas, buttons, anything you should press." }
+
+  # Outside and inside the hole.
+  periwinkle: { hex: "#A8B2FF", name: Periwinkle, role: "The surface: the ground above the hole. Hero, brand page, social cards." }
+  hole:       { hex: "#15123B", name: Hole,       role: "The inside. Page background once you've fallen in, and text on light colours." }
+  soil:       { hex: "#221D52", name: Soil,       role: "Chamber walls inside the burrow. Cards and panels on Hole." }
+  tunnel:     { hex: "#332C72", name: Tunnel,     role: "The tunnels between chambers, borders and quiet lines." }
+  paper:      { hex: "#FFF5E6", name: Tag Paper,  role: "Specimen tags, labels, body text on dark." }
+
+  # Filament drawer: the family colours.
+  tomato: { hex: "#FF6347", name: Tomato, role: "Demon Equipment." }
+  lilac:  { hex: "#C9A7FF", name: Lilac,  role: "Wearables." }
+  glow:   { hex: "#DFFF5E", name: Glow,   role: "Glowy Things. Glow-in-the-dark green." }
+  sky:    { hex: "#7FD3FF", name: Sky,    role: "Surfaces." }
+  mint:   { hex: "#5FE3B4", name: Mint,   role: "Contraptions." }
+
+# What each colour is used for. Templates use these names, not the hex codes.
+roles:
+  surface: periwinkle      # outside the hole
+  inside: hole             # inside the hole
+  panel: soil
+  line: tunnel
+  text-on-dark: paper
+  text-on-light: hole
+  muted-on-dark: periwinkle
+  accent: yolk
+  kinnera: bubblegum
+  kaveri: yolk
+  tag: paper
+  focus: glow
+
+# Pairs we promise meet WCAG AA. The /brand page checks every one of these at
+# build time and shows the ratio. The build fails if one drops below 4.5:1.
+contrast-pairs:
+  - [paper, hole]
+  - [paper, soil]
+  - [periwinkle, hole]
+  - [periwinkle, soil]
+  - [hole, periwinkle]
+  - [hole, paper]
+  - [hole, yolk]
+  - [hole, bubblegum]
+  - [hole, tomato]
+  - [hole, lilac]
+  - [hole, glow]
+  - [hole, sky]
+  - [hole, mint]
+  - [yolk, hole]
+  - [bubblegum, hole]
+  - [glow, soil]
+  - [yolk, soil]
+  - [bubblegum, soil]
+  - [tomato, soil]
+  - [lilac, soil]
+  - [sky, soil]
+  - [mint, soil]
+
+type:
+  display:
+    family: Gluten
+    file: gluten.woff2
+    weights: "400 900"
+    fallback: "ui-rounded, 'Arial Rounded MT Bold', system-ui, sans-serif"
+    use: "Headlines, names of things, the wordmark. Looks like it was squeezed out of a nozzle. Big or not at all."
+    sample: "Bokkala Cards Holda"
+  body:
+    family: Atkinson Hyperlegible Next
+    file: atkinson.woff2
+    weights: "200 800"
+    fallback: "system-ui, -apple-system, 'Segoe UI', sans-serif"
+    use: "Everything you read. Designed by the Braille Institute so every letter is easy to tell apart."
+    sample: "Because I wanted something flat and cute to hold my snacks."
+  mono:
+    family: Martian Mono
+    file: martian.woff2
+    weights: "400 700"
+    fallback: "ui-monospace, 'SF Mono', Menlo, monospace"
+    use: "Specimen tags, numbers, labels. Small and uppercase."
+    sample: "FIND No. 017 · HABITAT: EARS"
+  telugu:
+    family: Baloo Tammudu 2
+    file: telugu.woff2
+    weights: "700"
+    fallback: "sans-serif"
+    use: "Telugu, for the burrow's other name. Subset to only the letters we use."
+    sample: "కుందేలు బొక్క"
+
+# Sizes step up by a ratio so everything feels related. clamp() keeps them fluid.
+size:
+  "-1": "clamp(0.78rem, 0.74rem + 0.2vw, 0.88rem)"
+  "0":  "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"
+  "1":  "clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem)"
+  "2":  "clamp(1.6rem, 1.35rem + 1.2vw, 2.25rem)"
+  "3":  "clamp(2.1rem, 1.6rem + 2.4vw, 3.5rem)"
+  "4":  "clamp(2.8rem, 1.8rem + 5vw, 6rem)"
+  "5":  "clamp(3.6rem, 1.6rem + 10vw, 11rem)"
+
+space:
+  "3xs": "0.25rem"
+  "2xs": "0.5rem"
+  xs: "0.75rem"
+  s: "1rem"
+  m: "1.5rem"
+  l: "2.5rem"
+  xl: "4rem"
+  2xl: "6rem"
+
+radius:
+  s: "0.5rem"
+  m: "1rem"
+  l: "1.75rem"
+  blob: "42% 58% 46% 54% / 38% 44% 56% 62%"
+  pill: "999px"
+
+motion:
+  quick: "160ms"
+  easy: "420ms"
+  bounce: "cubic-bezier(.34, 1.56, .64, 1)"

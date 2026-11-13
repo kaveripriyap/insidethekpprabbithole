@@ -1,0 +1,24 @@
+{
+  "name": "inside-the-kpp-rabbit-hole",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Inside the KPP Rabbit Hole: oddly useful things by Kinnera & Kaveri.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "clean": "rm -rf _site",
+    "check": "node scripts/check-content.js"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.8",
+    "@11ty/eleventy-img": "^7.1.1",
+    "image-size": "^2.1.0",
+    "js-yaml": "^4.3.2",
+    "opentype.js": "^1.3.4"
+  }
+}

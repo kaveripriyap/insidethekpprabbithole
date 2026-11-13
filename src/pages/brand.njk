@@ -1,0 +1,263 @@
+---js
+{
+  permalink: "/brand/",
+  layout: "layouts/base.njk",
+  bodyClass: "brand",
+  themeColour: "periwinkle",
+  title: "The brand",
+  description: "Two ears, one hole. The KPP brand: mark, colours, type, voice and files, built from the same tokens as the site.",
+  card: { title: "Two ears, one hole.", kicker: "The KPP brand" },
+}
+---
+{%- set things = collections.items | byShelf("things") %}
+{%- set s = "things" | shelf %}
+
+<header class="b-hero">
+  <p class="kicker">The KPP brand · v2</p>
+  <h1 class="b-hero__title">Two ears,<br>one hole.</h1>
+  <div class="b-hero__mark" data-ears>
+    {% mark { decorative: true, cls: "b-hero__svg", parts: true } %}
+  </div>
+  <p class="b-hero__lede">Everything here is drawn from <code>design/tokens.yaml</code>, the same file the site uses. Change a colour there and this page, the site, the logo files and the social cards all change with it.</p>
+  <nav class="b-toc" aria-label="On this page">
+    <ol>
+      <li><a href="#mark">Mark</a></li>
+      <li><a href="#names">Names</a></li>
+      <li><a href="#colour">Colour</a></li>
+      <li><a href="#type">Type</a></li>
+      <li><a href="#voice">Voice</a></li>
+      <li><a href="#parts">Parts</a></li>
+      <li><a href="#wild">In the wild</a></li>
+      <li><a href="#files">Files</a></li>
+      <li><a href="#changed">What changed</a></li>
+    </ol>
+  </nav>
+</header>
+
+<section class="b-sec" id="mark" aria-labelledby="mark-t">
+  <div class="b-sec__head">
+    <p class="kicker">01</p>
+    <h2 id="mark-t" class="b-sec__title">The mark</h2>
+    <p>A rabbit ducking into its hole, ears last. There are two ears because there are two of us. <strong>The left ear is Kinnera, in Bubblegum. The right ear is Kaveri, in Yolk.</strong> The hole is where all the things come from.</p>
+  </div>
+  <div class="b-grid b-grid--4">
+    <figure class="b-tile paint-periwinkle">{% mark { decorative: true } %}<figcaption>On Periwinkle. The default.</figcaption></figure>
+    <figure class="b-tile paint-paper">{% mark { decorative: true } %}<figcaption>On Tag Paper.</figcaption></figure>
+    <figure class="b-tile paint-hole b-tile--dark">{% mark { decorative: true, hole: "#000000" } %}<figcaption>On Hole. The hole goes true black.</figcaption></figure>
+    <figure class="b-tile paint-yolk">{% mark { decorative: true, left: "hole", right: "hole" } %}<figcaption>One colour, for stamps and engraving.</figcaption></figure>
+  </div>
+
+  <h3 class="b-sub">The ears say who made it</h3>
+  <p class="b-note">Every find carries a tiny mark. The ear of whoever made it lights up. It's the logo and a credit line at once.</p>
+  <div class="b-grid b-grid--3 b-madeby">
+    <figure class="b-tile paint-hole b-tile--dark">{% madeBy "Kinnera", "made-by made-by--xl" %}<figcaption>Kinnera made it</figcaption></figure>
+    <figure class="b-tile paint-hole b-tile--dark">{% madeBy "Kaveri", "made-by made-by--xl" %}<figcaption>Kaveri made it</figcaption></figure>
+    <figure class="b-tile paint-hole b-tile--dark">{% madeBy "Kinnera/Kaveri", "made-by made-by--xl" %}<figcaption>Both of us</figcaption></figure>
+  </div>
+
+  <ul class="b-rules">
+    <li><b>Clear space:</b> leave at least one ear's width empty all round.</li>
+    <li><b>Smallest size:</b> 16 px on screens, 8 mm in print. Below that, use the one-colour version.</li>
+    <li><b>Don't</b> swap the ear colours, add a face, or put the ears on anything that isn't a hole.</li>
+  </ul>
+</section>
+
+<section class="b-sec" id="names" aria-labelledby="names-t">
+  <div class="b-sec__head">
+    <p class="kicker">02</p>
+    <h2 id="names-t" class="b-sec__title">Names</h2>
+    <p>The site is <strong>{{ site.title }}</strong>. The shop is <strong>{{ site.shop_name }}</strong>, all lowercase. "KPP" is always capitals. In Telugu, the burrow is <em>kundelu bokka</em>: rabbit hole.</p>
+  </div>
+  <div class="b-lockups">
+    <div class="b-lockup paint-periwinkle">
+      {% mark { decorative: true, cls: "b-lockup__mark" } %}
+      <p class="b-lockup__word">Inside the<br><span>KPP</span> Rabbit Hole</p>
+    </div>
+    <div class="b-lockup paint-paper">
+      {% mark { decorative: true, cls: "b-lockup__mark" } %}
+      <p class="b-lockup__word b-lockup__word--shop">the KPP<br>rabbit hole</p>
+    </div>
+    <div class="b-lockup paint-hole b-lockup--dark">
+      {% mark { decorative: true, cls: "b-lockup__mark", hole: "#000000" } %}
+      <p class="b-lockup__word b-lockup__word--te">{% telugu 64, "telugu-art telugu-art--big" %}<span>kundelu bokka</span></p>
+    </div>
+  </div>
+  <div class="b-taglines">
+    <p class="b-tagline"><span class="kicker">Tagline</span>{{ site.tagline }}</p>
+    <p class="b-tagline"><span class="kicker">The promise</span>{{ site.promise }}</p>
+  </div>
+</section>
+
+<section class="b-sec" id="colour" aria-labelledby="colour-t">
+  <div class="b-sec__head">
+    <p class="kicker">03</p>
+    <h2 id="colour-t" class="b-sec__title">Colour</h2>
+    <p>Above ground it's Periwinkle. Inside it's Hole. The two ears are Bubblegum and Yolk. The rest is a drawer of filament spools, one for each family of things.</p>
+  </div>
+  <ul class="swatches" role="list">
+    {%- for key, c in tokens.colours %}
+    <li class="swatch paint-{{ key }} ink-{{ key | inkFor }}">
+      <span class="swatch__spool" aria-hidden="true"></span>
+      <span class="swatch__name">{{ c.name }}</span>
+      <code class="swatch__hex">{{ c.hex }}</code>
+      <span class="swatch__role">{{ c.role }}</span>
+    </li>
+    {%- endfor %}
+  </ul>
+  <h3 class="b-sub">Readable, checked</h3>
+  <p class="b-note">These pairs are tested every time the site builds. If one drops below WCAG AA (4.5:1), the build stops.</p>
+  <ul class="pairs" role="list">
+    {%- for p in contrast %}
+    <li class="pair paint-{{ p.bg }}"><span class="pair__fg ink-{{ p.fg }}">Aa</span><span class="pair__meta ink-{{ p.bg | inkFor }}">{{ tokens.colours[p.fg].name }} on {{ tokens.colours[p.bg].name }}<b>{{ p.ratio }}:1 · {{ "AAA" if p.aaa else "AA" }}</b></span></li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<section class="b-sec" id="type" aria-labelledby="type-t">
+  <div class="b-sec__head">
+    <p class="kicker">04</p>
+    <h2 id="type-t" class="b-sec__title">Type</h2>
+    <p>Three faces, each with one job. All open-source, all served from our own site.</p>
+  </div>
+  <div class="specimens">
+    {%- for key, f in tokens.type %}
+    <article class="specimen specimen--{{ key }}">
+      <p class="kicker">{{ key }} · {{ f.family }}</p>
+      <p class="specimen__sample" lang="{{ 'te' if key == 'telugu' else 'en' }}">{{ f.sample }}</p>
+      <p class="specimen__use">{{ f.use }}</p>
+    </article>
+    {%- endfor %}
+  </div>
+  <div class="scale" aria-label="Type scale">
+    {%- for k, v in tokens.size | dictsort | reverse %}
+    <p class="scale__row fs-{{ k | replace('-', 'n') }}"><code>step {{ k }}</code><span>Holda</span></p>
+    {%- endfor %}
+  </div>
+</section>
+
+<section class="b-sec" id="voice" aria-labelledby="voice-t">
+  <div class="b-sec__head">
+    <p class="kicker">05</p>
+    <h2 id="voice-t" class="b-sec__title">Voice</h2>
+    <p>Say what it does, then say it fondly. We're proud of the weird things, not sorry for them.</p>
+  </div>
+  <div class="b-grid b-grid--3 voice">
+    <div class="voice__card"><h3>Plain first</h3><p>Lead with what the thing is and what it's for. The joke can come second.</p><p class="voice__eg">"Toilet Roll Holder. I wanted the rolls in front of me without doing yoga."</p></div>
+    <div class="voice__card"><h3>Our words are words</h3><p>Holda, mixy mixy, kommulu, whaley. If we call it that at home, it's called that here.</p><p class="voice__eg">"Bokkala Cards Holda"</p></div>
+    <div class="voice__card"><h3>Never sorry</h3><p>No "just a silly little", no "sorry it's weird". Weird is the point. Useful is the surprise.</p><p class="voice__eg">"Multi-functional demon equipment."</p></div>
+  </div>
+  <div class="dosay">
+    <div><h3 class="kicker">We say</h3><ul><li>find, chamber, fall in</li><li>holda, for anything that holds</li><li>"made by Kinnera & Kaveri"</li><li>oddly useful</li></ul></div>
+    <div><h3 class="kicker">We don't say</h3><ul><li>product, collection, SKU</li><li>"handcrafted with passion"</li><li>"just a little thing I made"</li><li>anything in ALL CAPS except KPP</li></ul></div>
+  </div>
+</section>
+
+<section class="b-sec b-sec--dark" id="parts" aria-labelledby="parts-t">
+  <div class="b-sec__head">
+    <p class="kicker kicker--glow">06</p>
+    <h2 id="parts-t" class="b-sec__title">Parts</h2>
+    <p>The pieces the site is built from. These are the real components, not pictures of them.</p>
+  </div>
+  <div class="parts">
+    <div class="parts__card">
+      <p class="kicker">Find card</p>
+      <ul class="finds finds--single" role="list">{% asyncEach item in things | sampleOf("Minesweeper Earrings") %}{% include "partials/find-card.njk" %}{% endeach %}</ul>
+    </div>
+    <div class="parts__tag">
+      <p class="kicker">Specimen tag</p>
+      <div class="tag tag--big paint-tomato">
+        <span class="tag__hole" aria-hidden="true"></span>
+        <p class="tag__no">Find No. 000</p>
+        <p class="tag__title">Name of the thing</p>
+        <p class="tag__desc">One honest line about why it exists.</p>
+        <dl class="tag__facts"><div><dt>Family</dt><dd>Demon Equipment</dd></div><div><dt>Habitat</dt><dd>where it lives</dd></div><div><dt>Made by</dt><dd class="tag__maker">{% madeBy "Kinnera/Kaveri", "made-by made-by--m" %}<span>Kinnera &amp; Kaveri</span></dd></div></dl>
+      </div>
+    </div>
+    <div class="parts__bits">
+      <p class="kicker">Buttons &amp; chips</p>
+      <p><a class="button" href="#parts">A button</a></p>
+      <p><a class="fall-deeper__btn" href="#parts">Fall deeper <span aria-hidden="true">↓</span></a></p>
+      <ol class="map__list">
+        {%- for fam in s.families %}<li><a class="map__link paint-{{ fam.colour }}" href="{{ fam.url }}"><span class="map__dot" aria-hidden="true"></span>{{ fam.name }}</a></li>{% endfor %}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="b-sec" id="wild" aria-labelledby="wild-t">
+  <div class="b-sec__head">
+    <p class="kicker">07</p>
+    <h2 id="wild-t" class="b-sec__title">In the wild</h2>
+    <p>For the Etsy shop and the box it arrives in. The shop images are made fresh from the tokens on every build and are ready to upload.</p>
+  </div>
+  <div class="wild">
+    <figure class="wild__banner"><img src="/brand/files/etsy-banner-3360x840.png" width="3360" height="840" loading="lazy" decoding="async" alt="Etsy banner: the KPP mark on Periwinkle with the words the KPP rabbit hole and Oddly useful."><figcaption>Etsy banner, 3360 × 840</figcaption></figure>
+    <figure class="wild__icon"><img src="/brand/files/etsy-shop-icon-500.png" width="500" height="500" loading="lazy" decoding="async" alt="Etsy shop icon: the two-ears-in-a-hole mark on a Periwinkle square."><figcaption>Shop icon, 500 × 500</figcaption></figure>
+    <figure class="wild__thanks">
+      <div class="thanks">
+        <p class="thanks__front">thanks for<br>falling in.</p>
+        <div class="thanks__back">{% mark { decorative: true, cls: "thanks__mark" } %}<p>You came back holding something. Tag us so we can see where it lives now.</p><p class="thanks__shop">{{ site.shop_name }}</p></div>
+      </div>
+      <figcaption>Thank-you card, A6</figcaption>
+    </figure>
+    <figure class="wild__sticker">
+      <div class="sticker">
+        <svg class="sticker__ring" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><path id="ring" d="M100 100m-76 0a76 76 0 1 1 152 0a76 76 0 1 1-152 0"/></defs><text><textPath href="#ring" textLength="470">oddly useful · made in two places at once ·</textPath></text></svg>
+        {% mark { decorative: true, cls: "sticker__mark" } %}
+      </div>
+      <figcaption>Box sticker, 50 mm</figcaption>
+    </figure>
+    <figure class="wild__label">
+      <div class="label tag paint-yolk">
+        <span class="tag__hole" aria-hidden="true"></span>
+        <p class="tag__no">Find No. 004 · Holdas</p>
+        <p class="tag__title">Cribbage Card Holder</p>
+        <dl class="tag__facts"><div><dt>Habitat</dt><dd>game night</dd></div><div><dt>Material</dt><dd>PLA, wipe clean</dd></div></dl>
+        {% madeBy "Kinnera", "made-by made-by--m" %}
+      </div>
+      <figcaption>Swing tag, tied on with string</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="b-sec" id="files" aria-labelledby="files-t">
+  <div class="b-sec__head">
+    <p class="kicker">08</p>
+    <h2 id="files-t" class="b-sec__title">Files</h2>
+    <p>Everything outlined, nothing to install.</p>
+  </div>
+  <ul class="files" role="list">
+    <li><a href="/brand/files/kpp-mark.svg" download>Mark, full colour <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-mark-tile.svg" download>Mark on Periwinkle <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-mark-on-hole.svg" download>Mark on Hole <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-mark-one-colour-hole.svg" download>Mark, one colour (dark) <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-mark-one-colour-paper.svg" download>Mark, one colour (light) <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-lockup-site.svg" download>Lockup: {{ site.title }} <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-lockup-shop.svg" download>Lockup: {{ site.shop_name }} <span>SVG</span></a></li>
+    <li><a href="/brand/files/kpp-lockup-shop-on-periwinkle.svg" download>Lockup on Periwinkle <span>SVG</span></a></li>
+    <li><a href="/brand/files/etsy-shop-icon-500.png" download>Etsy shop icon <span>PNG</span></a></li>
+    <li><a href="/brand/files/etsy-banner-3360x840.png" download>Etsy big banner <span>PNG</span></a></li>
+    <li><a href="/brand/files/etsy-mini-banner-1200x160.png" download>Etsy mini banner <span>PNG</span></a></li>
+  </ul>
+</section>
+
+<section class="b-sec" id="changed" aria-labelledby="changed-t">
+  <div class="b-sec__head">
+    <p class="kicker">09</p>
+    <h2 id="changed-t" class="b-sec__title">What changed</h2>
+    <p>For updating the Etsy shop and anything printed.</p>
+  </div>
+  <div class="table-wrap">
+    <table class="changes">
+      <thead><tr><th scope="col"></th><th scope="col">Before</th><th scope="col">Now</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Mark</th><td>Bunny head with a hole for a face</td><td>Two ears coming out of a hole. One ear per sister.</td></tr>
+        <tr><th scope="row">Main colours</th><td>Butter yellow, meadow green, plum</td><td>Periwinkle (outside), Hole (inside), Bubblegum + Yolk (the ears)</td></tr>
+        <tr><th scope="row">Headline type</th><td>Young Serif</td><td>Gluten</td></tr>
+        <tr><th scope="row">Body type</th><td>Karla</td><td>Atkinson Hyperlegible Next</td></tr>
+        <tr><th scope="row">Tagline</th><td>oddly useful.</td><td>Oddly useful. (kept) + "{{ site.promise }}"</td></tr>
+        <tr><th scope="row">Vocabulary</th><td>projects</td><td>finds, chambers, families</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>

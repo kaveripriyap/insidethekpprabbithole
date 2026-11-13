@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  SITE COPY
+#  Words that appear across the whole site. Edit freely, keep the quotes.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: "Inside the KPP Rabbit Hole"
+shop_name: "the KPP rabbit hole"
+tagline: "Oddly useful."
+promise: "We fall down rabbit holes and come back holding something."
+
+# The full web address, with no slash at the end. Used for canonical links,
+# the sitemap and social cards.
+url: "https://insidethekpprabbithole.xyz"
+
+makers:
+  - name: Kinnera
+    ear: left
+    colour: bubblegum
+  - name: Kaveri
+    ear: right
+    colour: yolk
+
+# "In two of these places at once"
+where: "In two of these places at once"
+cities:
+  - { name: Berlin, tz: Europe/Berlin }
+  - { name: Singapore, tz: Asia/Singapore }
+  - { name: Frankfurt, tz: Europe/Berlin }
+  - { name: Hyderabad, tz: Asia/Kolkata }
+
+# Short bits used around the site
+intro: "We sometimes make things. Mostly 3D printed, some sewn, all of them a little odd and surprisingly useful."
+description: "Kinnera and Kaveri sometimes make things: oddly useful, mostly 3D printed, a little weird. Fall in."
+email: "hello@kinnerapriyap.com"
+
+# Leave blank to hide. Paste the full address to show a link.
+etsy: ""
+instagram: ""
+github: "https://github.com/kaveripriyap/insidethekpprabbithole"
+
+# The burrow's other name, in Telugu: kundelu (rabbit) + bokka (hole).
+telugu: "కుందేలు బొక్క"
+telugu_says: "kundelu bokka · rabbit hole"

@@ -1,0 +1,19 @@
+<header class="topbar" id="top">
+  <a class="topbar__home" href="/" aria-label="{{ site.title }}, home">
+    {% mark { decorative: true, cls: "topbar__mark", parts: true } %}
+    <span class="topbar__name" aria-hidden="true">KPP<span> rabbit hole</span></span>
+  </a>
+  <nav class="topbar__nav" aria-label="Main">
+    <ul>
+      {%- for s in shelves %}{% if s.nav %}
+      <li><a href="/{{ s.url }}/"{% if page.url == "/" + s.url + "/" %} aria-current="page"{% endif %}>{{ s.nav }}</a></li>
+      {%- endif %}{% endfor %}
+      <li><a href="/brand/"{% if page.url == "/brand/" %} aria-current="page"{% endif %}>Brand</a></li>
+    </ul>
+  </nav>
+  <a class="depth" href="/project/" data-depth hidden>
+    <span class="depth__label">depth</span>
+    <span class="depth__num" data-depth-num>0</span><span class="depth__of">/<span data-depth-total>0</span></span>
+    <span class="visually-hidden">finds seen so far</span>
+  </a>
+</header>

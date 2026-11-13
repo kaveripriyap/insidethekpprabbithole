@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {%- set pageTitle = (title + " · " + site.title) if title and page.url != "/" else site.title + " · " + site.tagline %}
+  {%- set pageDesc = (description | striptags | trim) if description else site.description %}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ pageDesc }}">
+  <link rel="canonical" href="{{ page.url | absoluteUrl }}">
+  <meta name="theme-color" content="{{ themeColour | default('periwinkle') | hex }}">
+  <link rel="preload" href="/fonts/gluten.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/atkinson.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/site.css?v={{ build.hash }}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="{{ 'article' if shelf else 'website' }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ title or site.title }}">
+  <meta property="og:description" content="{{ pageDesc }}">
+  <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+  <meta property="og:image" content="{{ page.url | ogImage | absoluteUrl }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ title or site.title }}: {{ site.tagline }}">
+  <meta name="twitter:card" content="summary_large_image">
+  {%- if card %}
+  <meta name="kpp:card" content="{{ card | json }}">
+  {%- endif %}
+  <script src="/js/site.js?v={{ build.hash }}" type="module"></script>
+</head>
+<body class="{{ bodyClass }}">
+  <a class="skip" href="#main">Skip to the good stuff</a>
+  {% include "partials/topbar.njk" %}
+  <main id="main" tabindex="-1">
+    {{ content | safe }}
+  </main>
+  {% include "partials/footer.njk" %}
+</body>
+</html>

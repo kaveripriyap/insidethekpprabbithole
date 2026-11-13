@@ -1,0 +1,62 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  Netlify settings. These override anything typed into the Netlify UI.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit --no-fund"
+
+# Keeps resized photos between builds so deploys stay quick (local plugin, no install).
+[[plugins]]
+  package = "./netlify/plugins/image-cache"
+
+# ── Old addresses keep working ───────────────────────────────────────────────
+# Project pages already live at the same /project/<name>/ addresses as before.
+# The old site served photos from /assets/uploads/; they now live in /photos/.
+[[redirects]]
+  from = "/assets/uploads/*"
+  to = "/photos/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/projects/*"
+  to = "/project/:splat"
+  status = 301
+
+# ── Security headers, including a strict Content Security Policy ─────────────
+# No inline scripts or styles anywhere on the site, so nothing needs 'unsafe-inline'.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    X-Frame-Options = "DENY"
+
+# ── Caching ──────────────────────────────────────────────────────────────────
+# File names under /img/ change whenever the photo changes, so they can be kept forever.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS and JS are linked with ?v=<hash>, so a new deploy always gets a new address.
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

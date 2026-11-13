@@ -1,0 +1,25 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  EXAMPLE SHELF. To add a whole new kind of content (shop, notes, printables):
+#  1. Copy this folder and rename it, e.g. content/printables
+#     (folders starting with _ like this one are ignored)
+#  2. Edit the lines below.
+#  3. Add .md files to it, one per item, like content/things/_copy-me.md.
+#  That's it: a page at /printables/, an item page for each file, and a link
+#  in the menu all appear on the next build.
+# ─────────────────────────────────────────────────────────────────────────────
+
+title: "Printables"
+intro: "Files you can print at home. Free, a bit odd, surprisingly useful."
+nav: "Printables"        # menu label. Delete this line to keep it out of the menu.
+url: printables          # address: /printables/ and /printables/<file-name>/
+singular: printable      # what one item is called
+look: finds              # finds = photo + tag. Items without photos show as text.
+numbered: false          # true gives items a number ("Printable No. 004")
+position: 60             # menu order. things is 50, so this comes after.
+
+# Optional chambers, exactly like content/things/_shelf.yaml
+families:
+  - key: desk
+    name: Desk Stuff
+    colour: mint
+    blurb: "For the desk, and the stuff on the desk."

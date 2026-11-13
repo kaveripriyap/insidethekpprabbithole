@@ -1,0 +1,34 @@
+<footer class="bottom" aria-labelledby="bottom-title">
+  <div class="bottom__inner">
+    <p class="kicker">You've hit the bottom of the hole</p>
+    <h2 id="bottom-title" class="bottom__title">Say hi down here.</h2>
+    <a class="bottom__mail" href="mailto:{{ site.email }}">{{ site.email }}</a>
+
+    <section class="cities" aria-labelledby="cities-title">
+      <h3 id="cities-title" class="kicker">{{ site.where }}</h3>
+      <ul class="cities__list">
+        {%- for c in site.cities %}
+        <li class="city" data-tz="{{ c.tz }}">
+          <span class="city__name">{{ c.name }}</span>
+          <span class="city__time" data-time>{{ c.tz | replace("_", " ") }}</span>
+          <span class="city__mood" data-mood></span>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    <div class="bottom__links">
+      <ul>
+        {%- for s in shelves %}{% if s.nav %}<li><a href="/{{ s.url }}/">{{ s.nav }}</a></li>{% endif %}{% endfor %}
+        <li><a href="/brand/">The brand</a></li>
+        {%- if site.etsy %}<li><a href="{{ site.etsy }}">Shop on Etsy</a></li>{% endif %}
+        {%- if site.instagram %}<li><a href="{{ site.instagram }}">Instagram</a></li>{% endif %}
+        {%- if site.github %}<li><a href="{{ site.github }}">Source on GitHub</a></li>{% endif %}
+      </ul>
+      <a class="climb" href="#top">Climb out <span aria-hidden="true">↑</span></a>
+    </div>
+
+    <p class="bottom__telugu">{% telugu 34 %}<span>{{ site.telugu_says }}</span></p>
+    <p class="bottom__small">© {{ build.year }} Kinnera &amp; Kaveri. {{ site.tagline }}</p>
+  </div>
+</footer>
